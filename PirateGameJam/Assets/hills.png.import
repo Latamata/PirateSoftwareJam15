@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brotkum7ek5td"
-path="res://.godot/imported/cabin.png-9f4dd3d0e10c33033294413577ec2152.ctex"
+uid="uid://dpt8sojwfsqyr"
+path="res://.godot/imported/hills.png-abdbf698004eaa9c571f60828dc79bf1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/cabin.png"
-dest_files=["res://.godot/imported/cabin.png-9f4dd3d0e10c33033294413577ec2152.ctex"]
+source_file="res://Assets/hills.png"
+dest_files=["res://.godot/imported/hills.png-abdbf698004eaa9c571f60828dc79bf1.ctex"]
 
 [params]
 

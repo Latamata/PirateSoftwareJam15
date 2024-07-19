@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl3kkbs7wes5n"]
+[gd_scene load_steps=5 format=3 uid="uid://bl3kkbs7wes5n"]
 
-[ext_resource type="Texture2D" uid="uid://cxpr3fs26abnt" path="res://Assets/cabin.png" id="1_37fdn"]
+[ext_resource type="Texture2D" uid="uid://brotkum7ek5td" path="res://Assets/cabin.png" id="1_37fdn"]
+[ext_resource type="Texture2D" uid="uid://erhbttltlp0v" path="res://Assets/door.png" id="2_c1v1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7djab"]
 size = Vector2(300, 145)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pnsl4"]
+polygon = PackedVector2Array(-5, 70, -149, 76, 150, 73)
 
 [node name="Cabin" type="Area2D"]
 
@@ -11,5 +15,17 @@ size = Vector2(300, 145)
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_7djab")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Cabin" type="Sprite2D" parent="."]
 texture = ExtResource("1_37fdn")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_pnsl4")
+
+[node name="Door" type="Button" parent="."]
+offset_left = -129.0
+offset_top = -15.0
+offset_right = -45.0
+offset_bottom = 80.0
+focus_mode = 0
+theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
+icon = ExtResource("2_c1v1t")

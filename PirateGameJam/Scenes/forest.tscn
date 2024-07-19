@@ -1,19 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://bctvjurg8ccj0"]
+[gd_scene load_steps=8 format=3 uid="uid://bctvjurg8ccj0"]
 
 [ext_resource type="Texture2D" uid="uid://bavtmwout2cni" path="res://Assets/circle.png" id="1_13ifi"]
 [ext_resource type="PackedScene" uid="uid://boyl0lnqmo0kr" path="res://Scenes/player.tscn" id="2_04gc0"]
 [ext_resource type="Script" path="res://scripts/Playerarea.gd" id="3_ooijc"]
 [ext_resource type="PackedScene" uid="uid://bl3kkbs7wes5n" path="res://Scenes/cabin.tscn" id="4_1mjik"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_24wye"]
-polygon = PackedVector2Array(0, 24, -23, 24, 25, 24)
+[ext_resource type="Texture2D" uid="uid://cqg82h62j7kca" path="res://Assets/rock.png" id="5_afjpm"]
+[ext_resource type="Texture2D" uid="uid://dpt8sojwfsqyr" path="res://Assets/hills.png" id="6_k508c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sia2"]
 size = Vector2(1047, 227)
 
 [node name="Forest" type="Node2D"]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="enviorment" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="enviorment"]
+
+[node name="ParallaxHills" type="ParallaxLayer" parent="enviorment/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="enviorment/ParallaxBackground/ParallaxHills"]
+position = Vector2(578.5, 298.25)
+scale = Vector2(1.48582, 1.05801)
+texture = ExtResource("6_k508c")
+
+[node name="PointLight2D" type="PointLight2D" parent="enviorment"]
 position = Vector2(668, -23)
 scale = Vector2(18.2072, 9.02)
 energy = 1.37
@@ -21,28 +31,23 @@ shadow_enabled = true
 texture = ExtResource("1_13ifi")
 texture_scale = 1.64
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="enviorment"]
 offset_left = 3.0
 offset_top = 393.0
 offset_right = 1157.0
 offset_bottom = 647.0
 color = Color(0.274835, 0.273125, 4.81308e-08, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 1156.0
-offset_bottom = 393.0
-color = Color(0, 0.341176, 0.337255, 1)
-
-[node name="Cabin" parent="." instance=ExtResource("4_1mjik")]
+[node name="Cabin" parent="enviorment" instance=ExtResource("4_1mjik")]
 position = Vector2(532, 329)
+
+[node name="Rock" type="Sprite2D" parent="enviorment"]
+position = Vector2(906.5, 271)
+scale = Vector2(2.42, 5.04)
+texture = ExtResource("5_afjpm")
 
 [node name="player" parent="." instance=ExtResource("2_04gc0")]
 position = Vector2(405, 519)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="player"]
-occluder = SubResource("OccluderPolygon2D_24wye")
 
 [node name="Playerarea" type="Area2D" parent="."]
 script = ExtResource("3_ooijc")
