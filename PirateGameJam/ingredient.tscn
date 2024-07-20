@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://duobt0d3lctdj"]
+
+[ext_resource type="Texture2D" uid="uid://bx162jccxhtse" path="res://Assets/chamomile.png" id="1_1dstf"]
+[ext_resource type="Script" path="res://ingredient.gd" id="1_c5cq6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uxft"]
+radius = 99.0202
+
+[node name="ingredient" type="Area2D"]
+script = ExtResource("1_c5cq6")
+
+[node name="item" type="Button" parent="."]
+offset_left = -26.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 28.0
+focus_mode = 0
+theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
+icon = ExtResource("1_1dstf")
+flat = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5uxft")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="button_down" from="item" to="." method="_on_item_button_down"]

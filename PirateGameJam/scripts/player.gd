@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var max_speed: int = 100
 var speed: int = max_speed
 @onready var boundary_area = get_parent().get_node("Playerarea")
+var chamomileCount: int = 0
 
 func confine_to_boundary():
 	var boundary_shape = boundary_area.get_node("CollisionShape2D").shape

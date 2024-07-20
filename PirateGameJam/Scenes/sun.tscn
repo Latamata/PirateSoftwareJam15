@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2oaaoh2iqgga"]
+
+[ext_resource type="Texture2D" uid="uid://beqfm1atrfepl" path="res://Assets/sun.png" id="1_4ln1n"]
+[ext_resource type="Texture2D" uid="uid://bavtmwout2cni" path="res://Assets/circle.png" id="2_xes5l"]
+
+[node name="Sun" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4ln1n")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(18.2072, 9.02)
+energy = 0.75
+shadow_enabled = true
+texture = ExtResource("2_xes5l")
+texture_scale = 1.64

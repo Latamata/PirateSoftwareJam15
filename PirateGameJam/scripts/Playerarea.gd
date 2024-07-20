@@ -17,8 +17,8 @@ func update_boundaries():
 		# Calculate the corners of the RectangleShape2D
 		top_left = global_pos - extents
 		bottom_right = global_pos + extents
-		print("Top Left: ", top_left)
-		print("Bottom Right: ", bottom_right)
+		#print("Top Left: ", top_left)
+		#print("Bottom Right: ", bottom_right)
 	else:
 		print("Shape is not a RectangleShape2D")
 	
