@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqclgx4xfnce1"]
+
+[ext_resource type="Script" path="res://scripts/mint.gd" id="1_ng50b"]
+[ext_resource type="Texture2D" uid="uid://bhtsos2d5pod3" path="res://Assets/mint.png" id="2_ynlns"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uxft"]
+radius = 99.0202
+
+[node name="mint" type="Area2D"]
+script = ExtResource("1_ng50b")
+
+[node name="item" type="Button" parent="."]
+offset_left = -26.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 28.0
+focus_mode = 0
+theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
+icon = ExtResource("2_ynlns")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5uxft")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="button_down" from="item" to="." method="_on_item_button_down"]

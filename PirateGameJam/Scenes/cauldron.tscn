@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bynxm2t6bmve4"]
+
+[ext_resource type="Script" path="res://Scenes/cauldron.gd" id="1_r1fso"]
+[ext_resource type="Texture2D" uid="uid://dwwip26mcoqg6" path="res://Assets/cauldron.png" id="1_xe3gp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ta7u"]
+size = Vector2(160, 105)
+
+[node name="cauldron" type="Area2D"]
+script = ExtResource("1_r1fso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(82, 61.5)
+shape = SubResource("RectangleShape2D_6ta7u")
+
+[node name="item" type="Button" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 170.0
+offset_bottom = 120.0
+focus_mode = 0
+theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
+icon = ExtResource("1_xe3gp")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="item" to="." method="_on_item_button_down"]

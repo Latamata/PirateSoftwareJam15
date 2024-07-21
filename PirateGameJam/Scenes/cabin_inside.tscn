@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0uh6ad3mufqg"]
 
-[ext_resource type="Texture2D" uid="uid://dwwip26mcoqg6" path="res://Assets/cauldron.png" id="1_1ymfe"]
 [ext_resource type="Script" path="res://Scenes/cabin_inside.gd" id="1_ij07s"]
 [ext_resource type="PackedScene" uid="uid://boyl0lnqmo0kr" path="res://Scenes/player.tscn" id="3_maqwd"]
 [ext_resource type="Script" path="res://scripts/Playerarea.gd" id="4_rbc6l"]
 [ext_resource type="Texture2D" uid="uid://erhbttltlp0v" path="res://Assets/door.png" id="5_k661y"]
+[ext_resource type="PackedScene" uid="uid://bynxm2t6bmve4" path="res://Scenes/cauldron.tscn" id="5_utpuf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc1kq"]
 size = Vector2(1110, 227)
@@ -26,20 +26,6 @@ offset_right = 1158.0
 offset_bottom = 400.0
 color = Color(0.217101, 0.217101, 0.217101, 1)
 
-[node name="Cauldron" type="Sprite2D" parent="."]
-position = Vector2(580, 569)
-texture = ExtResource("1_1ymfe")
-
-[node name="player" parent="." instance=ExtResource("3_maqwd")]
-position = Vector2(414, 535)
-
-[node name="Playerarea" type="Area2D" parent="."]
-script = ExtResource("4_rbc6l")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Playerarea"]
-position = Vector2(576, 516)
-shape = SubResource("RectangleShape2D_fc1kq")
-
 [node name="Door" type="Button" parent="."]
 offset_left = 240.0
 offset_top = 311.0
@@ -49,7 +35,20 @@ focus_mode = 0
 theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
 icon = ExtResource("5_k661y")
 
+[node name="player" parent="." instance=ExtResource("3_maqwd")]
+position = Vector2(299, 428)
+
+[node name="Playerarea" type="Area2D" parent="."]
+script = ExtResource("4_rbc6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Playerarea"]
+position = Vector2(576, 516)
+shape = SubResource("RectangleShape2D_fc1kq")
+
 [node name="Timer" type="Timer" parent="."]
+
+[node name="cauldron" parent="." instance=ExtResource("5_utpuf")]
+position = Vector2(513, 445)
 
 [connection signal="button_down" from="Door" to="." method="_on_door_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

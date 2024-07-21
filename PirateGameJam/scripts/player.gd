@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
 
-@export var max_speed: int = 100
-var speed: int = max_speed
+var speed: int = 100
 @onready var boundary_area = get_parent().get_node("Playerarea")
-var chamomileCount: int = 0
 
 func confine_to_boundary():
 	var boundary_shape = boundary_area.get_node("CollisionShape2D").shape
@@ -15,12 +13,9 @@ func confine_to_boundary():
 		global_position.x = clamp(global_position.x, top_left.x, bottom_right.x)
 		global_position.y = clamp(global_position.y, top_left.y, bottom_right.y)
 
-func _process(delta):	
+func _process(delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
 	position += direction * speed * delta
-	#look_at(get_global_mouse_position())
 	move_and_slide()
 	confine_to_boundary()
-
-

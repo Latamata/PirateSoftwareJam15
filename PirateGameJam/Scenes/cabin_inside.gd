@@ -3,7 +3,7 @@ extends Node2D
 
 
 func _on_door_button_down():
-	print("button pressed")
+	print(Globals.chamomileCount)
 	$Timer.start()
 
 
