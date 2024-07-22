@@ -11,6 +11,7 @@ size = Vector2(50, 51)
 polygon = PackedVector2Array(0, 24, -23, 24, 25, 24)
 
 [node name="player" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_l31m8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
