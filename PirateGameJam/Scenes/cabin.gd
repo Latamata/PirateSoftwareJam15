@@ -1,7 +1,7 @@
 extends Area2D
 
 func _on_door_button_down():
-	print("button pressed")
+	#print("button pressed")
 	$Timer.start()
 
 

@@ -1,21 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://bctvjurg8ccj0"]
+[gd_scene load_steps=12 format=3 uid="uid://bctvjurg8ccj0"]
 
 [ext_resource type="Texture2D" uid="uid://d3m00hbes00x" path="res://Assets/cloud.png" id="1_m3kf5"]
 [ext_resource type="PackedScene" uid="uid://boyl0lnqmo0kr" path="res://Scenes/player.tscn" id="2_04gc0"]
 [ext_resource type="Script" path="res://scripts/Playerarea.gd" id="3_ooijc"]
 [ext_resource type="PackedScene" uid="uid://bl3kkbs7wes5n" path="res://Scenes/cabin.tscn" id="4_1mjik"]
 [ext_resource type="Texture2D" uid="uid://cqg82h62j7kca" path="res://Assets/rock.png" id="5_afjpm"]
+[ext_resource type="Texture2D" uid="uid://c0fkyeits0mpj" path="res://Assets/cavedoor.png" id="5_gps0f"]
 [ext_resource type="Texture2D" uid="uid://dpt8sojwfsqyr" path="res://Assets/hills.png" id="6_k508c"]
 [ext_resource type="Script" path="res://Scenes/StageItems.gd" id="7_hk2ec"]
 [ext_resource type="PackedScene" uid="uid://b2oaaoh2iqgga" path="res://Scenes/sun.tscn" id="7_rwdtr"]
-[ext_resource type="PackedScene" uid="uid://duobt0d3lctdj" path="res://Scenes/ingredient.tscn" id="8_xxpdl"]
-[ext_resource type="PackedScene" uid="uid://bqclgx4xfnce1" path="res://Scenes/mint.tscn" id="9_awb8o"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_awpgf"]
 polygon = PackedVector2Array(-23.913, 23.8636, -2.17389, 22.1591, 23.3695, 23.8636)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sia2"]
-size = Vector2(3537, 227)
+size = Vector2(3886.5, 227)
 
 [node name="Forest" type="Node2D"]
 
@@ -33,7 +32,7 @@ motion_mirroring = Vector2(229, 0)
 [node name="TextureRect" type="TextureRect" parent="enviorment/ParallaxBackground/ParallaxLayer"]
 offset_left = -52.0
 offset_top = -23.0
-offset_right = 1424.0
+offset_right = 1474.0
 offset_bottom = 335.0
 texture = ExtResource("1_m3kf5")
 stretch_mode = 1
@@ -76,34 +75,30 @@ top_level = true
 position = Vector2(816, 454)
 script = ExtResource("7_hk2ec")
 
-[node name="Playerarea" type="Area2D" parent="StageItems"]
-position = Vector2(-816, -454)
-script = ExtResource("3_ooijc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StageItems/Playerarea"]
-position = Vector2(598.5, 516)
-shape = SubResource("RectangleShape2D_6sia2")
-
-[node name="ingredient" parent="StageItems" instance=ExtResource("8_xxpdl")]
-
-[node name="ingredient2" parent="StageItems" instance=ExtResource("8_xxpdl")]
-position = Vector2(-533, 3)
-
-[node name="ingredient3" parent="StageItems" instance=ExtResource("8_xxpdl")]
-position = Vector2(232, -19)
-
-[node name="mint" parent="StageItems" instance=ExtResource("9_awb8o")]
-position = Vector2(471, 65)
-
-[node name="mint2" parent="StageItems" instance=ExtResource("9_awb8o")]
-position = Vector2(728, 44)
-
 [node name="player" parent="StageItems" instance=ExtResource("2_04gc0")]
-z_index = 1
-z_as_relative = false
-position = Vector2(-369, -34)
+position = Vector2(-378, -51)
 
 [node name="Camera2D" type="Camera2D" parent="StageItems/player"]
 offset = Vector2(4, -90)
 limit_bottom = 735
 limit_smoothed = true
+
+[node name="Door" type="Button" parent="StageItems"]
+offset_left = 1777.0
+offset_top = -35.0
+offset_right = 1925.0
+offset_bottom = 117.0
+focus_mode = 0
+theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
+icon = ExtResource("5_gps0f")
+flat = true
+
+[node name="Playerarea" type="Area2D" parent="StageItems"]
+position = Vector2(-816, -454)
+script = ExtResource("3_ooijc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageItems/Playerarea"]
+position = Vector2(779.75, 512)
+shape = SubResource("RectangleShape2D_6sia2")
+
+[connection signal="button_down" from="StageItems/Door" to="StageItems" method="_on_door_button_down"]

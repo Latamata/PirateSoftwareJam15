@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var speed: int = 100
 @onready var boundary_area = get_parent().get_node("Playerarea")
 var nodes_to_update = []

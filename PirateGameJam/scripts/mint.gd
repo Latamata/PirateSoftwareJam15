@@ -2,11 +2,12 @@ extends Area2D
 
 var buttonClicked
 var playerWithin
-
+var id = ""  # Unique identifier for each chamomile instance
 func _on_item_button_down():
 	if playerWithin:
 		Globals.mintCount += 1
-		print("mintcount" ,Globals.mintCount)
+		Globals.insideHouseStuff.erase(id)  
+		print("mintcount" ,id)
 		queue_free()
 
 func _on_body_entered(body):

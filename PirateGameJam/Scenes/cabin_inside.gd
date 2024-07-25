@@ -1,7 +1,5 @@
 extends Node2D
-
-
-
+var playerOne: PackedScene = preload("res://Scenes/player.tscn")
 func _on_door_button_down():
 	print(Globals.chamomileCount)
 	$Timer.start()
