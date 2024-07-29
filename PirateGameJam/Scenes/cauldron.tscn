@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bynxm2t6bmve4"]
+[gd_scene load_steps=6 format=3 uid="uid://bynxm2t6bmve4"]
 
-[ext_resource type="Script" path="res://Scenes/cauldron.gd" id="1_r1fso"]
+[ext_resource type="Script" path="res://scripts/cauldron.gd" id="1_r1fso"]
 [ext_resource type="Texture2D" uid="uid://dwwip26mcoqg6" path="res://Assets/cauldron.png" id="1_xe3gp"]
+[ext_resource type="Texture2D" uid="uid://olj4bnjyf3nc" path="res://Assets/bubble.png" id="3_bjlac"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eaac3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ta7u"]
-size = Vector2(160, 105)
+size = Vector2(107, 69)
 
-[node name="cauldron" type="Area2D"]
+[node name="cauldron" type="CharacterBody2D"]
 script = ExtResource("1_r1fso")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(82, 61.5)
+material = SubResource("CanvasItemMaterial_eaac3")
+position = Vector2(61.5, 54.5)
 shape = SubResource("RectangleShape2D_6ta7u")
 
 [node name="item" type="Button" parent="."]
@@ -23,5 +27,17 @@ theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
 icon = ExtResource("1_xe3gp")
 flat = true
 metadata/_edit_use_anchors_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(59, 34)
+amount = 10
+texture = ExtResource("3_bjlac")
+emission_shape = 1
+emission_sphere_radius = 32.15
+spread = 49.0
+gravity = Vector2(0, -50)
+scale_amount_min = 9.0
+scale_amount_max = 9.0
+color = Color(0.298039, 0.227451, 0.278431, 0.643137)
 
 [connection signal="button_down" from="item" to="." method="_on_item_button_down"]

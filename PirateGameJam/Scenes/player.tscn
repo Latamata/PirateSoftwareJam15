@@ -1,30 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://boyl0lnqmo0kr"]
+[gd_scene load_steps=10 format=3 uid="uid://boyl0lnqmo0kr"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_l31m8"]
 [ext_resource type="Texture2D" uid="uid://b21ydqj2ggeoh" path="res://Assets/player.png" id="1_t3ala"]
-[ext_resource type="Texture2D" uid="uid://baehj48fwy3wf" path="res://Assets/whitewizardhat.png" id="3_2fce7"]
+[ext_resource type="PackedScene" uid="uid://psu183nshl6a" path="res://Scenes/user_interface.tscn" id="4_aoq7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcb22"]
+atlas = ExtResource("1_t3ala")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f545"]
+atlas = ExtResource("1_t3ala")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mysgx"]
+atlas = ExtResource("1_t3ala")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dauf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcb22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f545")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mysgx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glqcb"]
-size = Vector2(50, 51)
+size = Vector2(42, 49)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wk5ps"]
-polygon = PackedVector2Array(0, 24, -23, 24, 25, 24)
+polygon = PackedVector2Array(0, 24, -21, 24, 21, 24)
 
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_l31m8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_t3ala")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2dauf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_glqcb")
 
-[node name="hat" type="Sprite2D" parent="."]
-position = Vector2(9.53674e-07, -34)
-scale = Vector2(0.54, 0.6)
-texture = ExtResource("3_2fce7")
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_wk5ps")
+
+[node name="userInterface" parent="." instance=ExtResource("4_aoq7h")]

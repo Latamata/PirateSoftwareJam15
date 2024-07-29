@@ -6,7 +6,7 @@ var id = ""  # Unique identifier for each chamomile instance
 func _on_item_button_down():
 	if playerWithin:
 		Globals.chamomileCount += 1
-		Globals.ingredientsList.erase(id)  
+		Globals.chamomiles.erase(id)  
 		print("chamomileCount: ", id)
 		queue_free()
 

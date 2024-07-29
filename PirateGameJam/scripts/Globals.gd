@@ -1,24 +1,52 @@
 extends Node
 
-var caveSwitch = false
-var mushroomCount = 0
-var mushroomCauldronCount = 0
-var mintCount = 0
-var mintCauldronCCount = 0
-var chamomileCount = 0
-var chamomileCauldronCCount = 0
-var ingredientsList = {
-	"One": Vector2(100, 100),
-	"Two": Vector2(300, 100),
-	"Three": Vector2(500, 100)
-}
+signal chamomile_change
+signal mint_change
+signal mushroom_change
 
-var insideHouseStuff = {
-	"One": Vector2(350, 550),
-	"Two": Vector2(550, 550),
-	"Three": Vector2(770, 550)
-}
-var ingredients_collected = false
+var shadowEnabled = false
+var caveSwitch = false
+var mushroomCauldronCount = 0
+var mintCauldronCCount = 0
+var chamomileCauldronCCount = 0
+
+
+var chamomileCount = 0:
+	get:
+		return chamomileCount
+	set(value):
+		chamomileCount = value
+		chamomile_change.emit()
+var mintCount = 0:
+	get:
+		return mintCount
+	set(value):
+		mintCount = value
+		mint_change.emit()
+var mushroomCount = 0:
+	get:
+		return mushroomCount
+	set(value):
+		mushroomCount = value
+		mushroom_change.emit()
+
+var chamomiles = [
+	Vector2(100, 125),
+	Vector2(600, 0),
+	Vector2(1200, 150)
+]
+
+var mints = [
+	Vector2(-1550, 150),
+	Vector2(-1750, 0),
+	Vector2(-2140, 145)
+]
+
+var mushrooms = [
+	Vector2(250, 0),
+	Vector2(250, 75),
+	Vector2(250, 150)
+]
 
 func add_to_cauldron():
 	chamomileCauldronCCount += chamomileCount
@@ -28,5 +56,3 @@ func add_to_cauldron():
 	chamomileCount = 0
 	mintCount = 0
 	print("Added to cauldron" )
-	if chamomileCauldronCCount == 3 and mintCauldronCCount == 3 and mushroomCauldronCount == 3:
-		print("quest done")

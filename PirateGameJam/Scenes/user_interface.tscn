@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://psu183nshl6a"]
+
+[ext_resource type="Script" path="res://scripts/userInterface.gd" id="1_lnrs4"]
+[ext_resource type="Texture2D" uid="uid://bx162jccxhtse" path="res://Assets/chamomile.png" id="2_gltao"]
+[ext_resource type="Texture2D" uid="uid://bhtsos2d5pod3" path="res://Assets/mint.png" id="3_m2220"]
+[ext_resource type="Texture2D" uid="uid://dsfliijv7wvhm" path="res://Assets/mushroom.png" id="4_pbgxt"]
+
+[node name="userInterface" type="CanvasLayer"]
+script = ExtResource("1_lnrs4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 515.0
+offset_right = 157.0
+offset_bottom = 619.0
+
+[node name="chamoile" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -118.0
+offset_right = 58.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/chamoile"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 46
+text = "00"
+
+[node name="TextureRect" type="TextureRect" parent="Control/chamoile"]
+layout_mode = 2
+texture = ExtResource("2_gltao")
+stretch_mode = 5
+
+[node name="mint" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -118.0
+offset_right = 29.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/mint"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 46
+text = "00"
+
+[node name="TextureRect" type="TextureRect" parent="Control/mint"]
+layout_mode = 2
+texture = ExtResource("3_m2220")
+
+[node name="mushroom" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -118.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/mushroom"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 46
+text = "00"
+
+[node name="TextureRect" type="TextureRect" parent="Control/mushroom"]
+layout_mode = 2
+texture = ExtResource("4_pbgxt")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 83.0
+offset_top = 63.0
+offset_right = 1064.0
+offset_bottom = 465.0
+color = Color(0.407843, 0.407843, 0.364706, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_right = 969.0
+offset_bottom = 414.0
+theme_override_colors/default_color = Color(0, 0.658824, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Your shadow is missing due to a curse, the potion to cure it requires 3 of each ingredients found outside.
+Chamomile
+Mint
+Mushrooms
+WASD  to move, click to interact"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 177.0
+offset_top = 539.0
+offset_right = 222.0
+offset_bottom = 606.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 28
+text = "!"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

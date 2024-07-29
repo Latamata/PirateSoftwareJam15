@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baehj48fwy3wf"
-path="res://.godot/imported/whitewizardhat.png-b9871663b7752de9ca84e1294d163ea8.ctex"
+uid="uid://gcec5vi2hn7y"
+path="res://.godot/imported/chair.png-84b740201e7482b276361ce3ea6a682e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/whitewizardhat.png"
-dest_files=["res://.godot/imported/whitewizardhat.png-b9871663b7752de9ca84e1294d163ea8.ctex"]
+source_file="res://Assets/chair.png"
+dest_files=["res://.godot/imported/chair.png-84b740201e7482b276361ce3ea6a682e.ctex"]
 
 [params]
 

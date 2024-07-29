@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpxr8ro4fgm7r"]
+
+[ext_resource type="Script" path="res://scripts/cavedoor.gd" id="1_1mvvu"]
+[ext_resource type="Texture2D" uid="uid://c0fkyeits0mpj" path="res://Assets/cavedoor.png" id="2_sn832"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al6or"]
+size = Vector2(174, 126.5)
+
+[node name="cavedoor" type="Area2D"]
+script = ExtResource("1_1mvvu")
+
+[node name="Door" type="Button" parent="."]
+offset_left = -79.0
+offset_top = -79.0
+offset_right = 69.0
+offset_bottom = 73.0
+focus_mode = 0
+theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
+icon = ExtResource("2_sn832")
+flat = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-35, 6.25)
+shape = SubResource("RectangleShape2D_al6or")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="button_down" from="Door" to="." method="_on_door_button_down"]

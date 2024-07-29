@@ -1,37 +1,41 @@
-[gd_scene load_steps=12 format=3 uid="uid://bctvjurg8ccj0"]
+[gd_scene load_steps=15 format=3 uid="uid://bctvjurg8ccj0"]
 
 [ext_resource type="Texture2D" uid="uid://d3m00hbes00x" path="res://Assets/cloud.png" id="1_m3kf5"]
 [ext_resource type="PackedScene" uid="uid://boyl0lnqmo0kr" path="res://Scenes/player.tscn" id="2_04gc0"]
 [ext_resource type="Script" path="res://scripts/Playerarea.gd" id="3_ooijc"]
 [ext_resource type="PackedScene" uid="uid://bl3kkbs7wes5n" path="res://Scenes/cabin.tscn" id="4_1mjik"]
 [ext_resource type="Texture2D" uid="uid://cqg82h62j7kca" path="res://Assets/rock.png" id="5_afjpm"]
-[ext_resource type="Texture2D" uid="uid://c0fkyeits0mpj" path="res://Assets/cavedoor.png" id="5_gps0f"]
 [ext_resource type="Texture2D" uid="uid://dpt8sojwfsqyr" path="res://Assets/hills.png" id="6_k508c"]
-[ext_resource type="Script" path="res://Scenes/StageItems.gd" id="7_hk2ec"]
+[ext_resource type="Script" path="res://scripts/StageItems.gd" id="7_hk2ec"]
 [ext_resource type="PackedScene" uid="uid://b2oaaoh2iqgga" path="res://Scenes/sun.tscn" id="7_rwdtr"]
+[ext_resource type="PackedScene" uid="uid://wu33jgbkxtev" path="res://Scenes/bridge.tscn" id="11_5l5on"]
+[ext_resource type="PackedScene" uid="uid://d4i0jyfdgge3q" path="res://Scenes/bush.tscn" id="11_xqyql"]
+[ext_resource type="Texture2D" uid="uid://dsbcocf4xhhof" path="res://Assets/wall.png" id="12_gx5vc"]
+[ext_resource type="PackedScene" uid="uid://dpxr8ro4fgm7r" path="res://Scenes/cavedoor.tscn" id="12_u6g1t"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_awpgf"]
 polygon = PackedVector2Array(-23.913, 23.8636, -2.17389, 22.1591, 23.3695, 23.8636)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sia2"]
-size = Vector2(3886.5, 227)
+size = Vector2(3943, 200.5)
 
 [node name="Forest" type="Node2D"]
 
 [node name="enviorment" type="Node2D" parent="."]
 
 [node name="Sun" parent="enviorment" instance=ExtResource("7_rwdtr")]
-position = Vector2(-12, 20)
+position = Vector2(-569, 43)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="enviorment"]
 scroll_offset = Vector2(500, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="enviorment/ParallaxBackground"]
+motion_scale = Vector2(1.05, 1.05)
 motion_mirroring = Vector2(229, 0)
 
 [node name="TextureRect" type="TextureRect" parent="enviorment/ParallaxBackground/ParallaxLayer"]
 offset_left = -52.0
-offset_top = -23.0
+offset_top = -89.0
 offset_right = 1474.0
 offset_bottom = 335.0
 texture = ExtResource("1_m3kf5")
@@ -39,7 +43,7 @@ stretch_mode = 1
 
 [node name="ParallaxHills" type="ParallaxLayer" parent="enviorment/ParallaxBackground"]
 position = Vector2(0, 200)
-motion_offset = Vector2(500, 0)
+motion_scale = Vector2(1.01, 1.01)
 motion_mirroring = Vector2(380, 0)
 
 [node name="TextureRect" type="TextureRect" parent="enviorment/ParallaxBackground/ParallaxHills"]
@@ -53,9 +57,9 @@ stretch_mode = 1
 
 [node name="ColorRect2" type="ColorRect" parent="enviorment"]
 texture_repeat = 3
-offset_left = -1535.0
-offset_top = 390.0
-offset_right = 2973.0
+offset_left = -2215.0
+offset_top = 407.0
+offset_right = 3175.0
 offset_bottom = 646.0
 color = Color(0.286795, 0.343861, 0.0419557, 1)
 
@@ -63,11 +67,27 @@ color = Color(0.286795, 0.343861, 0.0419557, 1)
 position = Vector2(532, 333)
 
 [node name="Rock" type="Sprite2D" parent="enviorment"]
-position = Vector2(904, 368)
-scale = Vector2(1.84, 1.76)
+position = Vector2(1234, 365)
+scale = Vector2(2.95, 1.76)
 texture = ExtResource("5_afjpm")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="enviorment/Rock"]
+occluder = SubResource("OccluderPolygon2D_awpgf")
+
+[node name="Rock2" type="Sprite2D" parent="enviorment"]
+position = Vector2(-399, 363)
+scale = Vector2(2.95, 1.88)
+texture = ExtResource("5_afjpm")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="enviorment/Rock2"]
+occluder = SubResource("OccluderPolygon2D_awpgf")
+
+[node name="Rock3" type="Sprite2D" parent="enviorment"]
+position = Vector2(-1267, 368)
+scale = Vector2(2.95, 1.88)
+texture = ExtResource("5_afjpm")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="enviorment/Rock3"]
 occluder = SubResource("OccluderPolygon2D_awpgf")
 
 [node name="StageItems" type="Node2D" parent="."]
@@ -83,22 +103,39 @@ offset = Vector2(4, -90)
 limit_bottom = 735
 limit_smoothed = true
 
-[node name="Door" type="Button" parent="StageItems"]
-offset_left = 1777.0
-offset_top = -35.0
-offset_right = 1925.0
-offset_bottom = 117.0
-focus_mode = 0
-theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
-icon = ExtResource("5_gps0f")
-flat = true
-
 [node name="Playerarea" type="Area2D" parent="StageItems"]
 position = Vector2(-816, -454)
 script = ExtResource("3_ooijc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageItems/Playerarea"]
-position = Vector2(779.75, 512)
+position = Vector2(622.5, 519.75)
 shape = SubResource("RectangleShape2D_6sia2")
 
-[connection signal="button_down" from="StageItems/Door" to="StageItems" method="_on_door_button_down"]
+[node name="bush" parent="." instance=ExtResource("11_xqyql")]
+position = Vector2(-558, 446)
+
+[node name="bush3" parent="." instance=ExtResource("11_xqyql")]
+position = Vector2(1045, 415)
+
+[node name="bush4" parent="." instance=ExtResource("11_xqyql")]
+position = Vector2(2351, 382)
+
+[node name="bush5" parent="." instance=ExtResource("11_xqyql")]
+position = Vector2(2487, 580)
+
+[node name="bush2" parent="." instance=ExtResource("11_xqyql")]
+position = Vector2(-972, 524)
+
+[node name="bridge" parent="." instance=ExtResource("11_5l5on")]
+position = Vector2(-247, 526)
+
+[node name="Wall" type="Sprite2D" parent="."]
+position = Vector2(-1396, 527)
+texture = ExtResource("12_gx5vc")
+
+[node name="Wall2" type="Sprite2D" parent="."]
+position = Vector2(2782, 527)
+texture = ExtResource("12_gx5vc")
+
+[node name="cavedoor" parent="." instance=ExtResource("12_u6g1t")]
+position = Vector2(2692, 516)
