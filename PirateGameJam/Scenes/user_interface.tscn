@@ -94,13 +94,13 @@ color = Color(0.407843, 0.407843, 0.364706, 1)
 layout_mode = 0
 offset_right = 969.0
 offset_bottom = 414.0
-theme_override_colors/default_color = Color(0, 0.658824, 0, 1)
+theme_override_colors/default_color = Color(0.84013, 0.78602, 0.492157, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "Your shadow is missing due to a curse, the potion to cure it requires 3 of each ingredients found outside.
-Chamomile
-Mint
-Mushrooms
-WASD  to move, click to interact"
+     >Chamomile
+     >Mint
+     >Mushrooms
+                        WASD  to move, click to interact"
 
 [node name="Button" type="Button" parent="."]
 offset_left = 177.0

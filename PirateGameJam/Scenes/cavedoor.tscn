@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c0fkyeits0mpj" path="res://Assets/cavedoor.png" id="2_sn832"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al6or"]
-size = Vector2(174, 126.5)
+size = Vector2(231, 126.5)
 
 [node name="cavedoor" type="Area2D"]
 script = ExtResource("1_1mvvu")
@@ -20,7 +20,7 @@ icon = ExtResource("2_sn832")
 flat = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-35, 6.25)
+position = Vector2(-6.5, 6.25)
 shape = SubResource("RectangleShape2D_al6or")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

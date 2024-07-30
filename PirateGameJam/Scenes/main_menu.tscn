@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4qqrf0b2p8jy"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_c413e"]
+[ext_resource type="Texture2D" uid="uid://b08bbsxktj2ks" path="res://Assets/background.png" id="2_qnwkd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg6ih"]
+bg_color = Color(0.937255, 0.737255, 0.27451, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_c413e")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(669.594, 338.406)
+scale = Vector2(1.31915, 0.643738)
+texture = ExtResource("2_qnwkd")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = 111.0
+offset_right = 674.0
+offset_bottom = 224.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.77309, 0.676044, 0.348924, 1)
+theme_override_colors/font_shadow_color = Color(0.687365, 0.183038, 0.158012, 1)
+theme_override_constants/shadow_offset_x = 9
+theme_override_font_sizes/font_size = 77
+theme_override_styles/normal = SubResource("StyleBoxFlat_dg6ih")
+text = "Kettle Quest"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 411.0
+offset_top = 487.0
+offset_right = 647.0
+offset_bottom = 564.0
+theme_override_colors/font_color = Color(1, 0.619268, 0.336867, 1)
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

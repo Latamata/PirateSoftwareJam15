@@ -13,7 +13,6 @@ func update_boundaries():
 	if shape is RectangleShape2D:
 		var global_pos = collision_shape.global_position
 		var extents = shape.extents
-
 		# Calculate the corners of the RectangleShape2D
 		top_left = global_pos - extents
 		bottom_right = global_pos + extents

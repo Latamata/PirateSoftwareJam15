@@ -4,7 +4,9 @@ var playerWithin = false
 var id = ""  # Unique identifier for each chamomile instance
 
 func _on_item_button_down():
+
 	if playerWithin:
+		AudioManager.play_sound()
 		Globals.chamomileCount += 1
 		Globals.chamomiles.erase(id)  
 		print("chamomileCount: ", id)

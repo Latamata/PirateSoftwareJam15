@@ -3,6 +3,7 @@ var atDoor = false
 func _on_door_button_down():
 	#print("button pressed")
 	if atDoor:
+		$AudioStreamPlayer2D.play()
 		$Timer.start()
 
 

@@ -6,6 +6,7 @@ var id = ""  # Unique identifier for each chamomile instance
 
 func _on_item_button_down():
 	if playerWithin:
+		AudioManager.play_sound()
 		Globals.mintCount += 1
 		Globals.mints.erase(id)  
 		print("mintcount" ,id)

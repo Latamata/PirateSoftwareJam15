@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bynxm2t6bmve4"]
+[gd_scene load_steps=7 format=3 uid="uid://bynxm2t6bmve4"]
 
 [ext_resource type="Script" path="res://scripts/cauldron.gd" id="1_r1fso"]
 [ext_resource type="Texture2D" uid="uid://dwwip26mcoqg6" path="res://Assets/cauldron.png" id="1_xe3gp"]
 [ext_resource type="Texture2D" uid="uid://olj4bnjyf3nc" path="res://Assets/bubble.png" id="3_bjlac"]
+[ext_resource type="AudioStream" uid="uid://clejfomwalm5f" path="res://Assets/bubbles.mp3" id="4_8s6pm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eaac3"]
 
@@ -39,5 +40,8 @@ gravity = Vector2(0, -50)
 scale_amount_min = 9.0
 scale_amount_max = 9.0
 color = Color(0.298039, 0.227451, 0.278431, 0.643137)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8s6pm")
 
 [connection signal="button_down" from="item" to="." method="_on_item_button_down"]

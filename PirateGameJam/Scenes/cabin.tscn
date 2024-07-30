@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl3kkbs7wes5n"]
+[gd_scene load_steps=7 format=3 uid="uid://bl3kkbs7wes5n"]
 
 [ext_resource type="Texture2D" uid="uid://brotkum7ek5td" path="res://Assets/cabin.png" id="1_37fdn"]
 [ext_resource type="Script" path="res://scripts/cabin.gd" id="1_ro8p5"]
 [ext_resource type="Texture2D" uid="uid://erhbttltlp0v" path="res://Assets/door.png" id="2_c1v1t"]
+[ext_resource type="AudioStream" uid="uid://c1gnnnp4g73at" path="res://Assets/dorm-door-opening-6038.mp3" id="4_w4ljv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7djab"]
 size = Vector2(141, 198)
@@ -36,6 +37,9 @@ icon = ExtResource("2_c1v1t")
 flat = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_w4ljv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

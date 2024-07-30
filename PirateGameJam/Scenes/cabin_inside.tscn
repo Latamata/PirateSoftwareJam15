@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0uh6ad3mufqg"]
+[gd_scene load_steps=12 format=3 uid="uid://d0uh6ad3mufqg"]
 
 [ext_resource type="Script" path="res://scripts/cabin_inside.gd" id="1_ij07s"]
 [ext_resource type="PackedScene" uid="uid://boyl0lnqmo0kr" path="res://Scenes/player.tscn" id="3_maqwd"]
@@ -9,37 +9,38 @@
 [ext_resource type="Texture2D" uid="uid://d024issiucewp" path="res://Assets/bookshelf.png" id="7_4wdk8"]
 [ext_resource type="Texture2D" uid="uid://gcec5vi2hn7y" path="res://Assets/chair.png" id="8_vw6nn"]
 [ext_resource type="Texture2D" uid="uid://brotkum7ek5td" path="res://Assets/cabin.png" id="9_lva16"]
+[ext_resource type="AudioStream" uid="uid://c1gnnnp4g73at" path="res://Assets/dorm-door-opening-6038.mp3" id="10_sxv03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc1kq"]
-size = Vector2(1056, 200.5)
+size = Vector2(1056, 217.5)
 
 [node name="CabinInside" type="Node2D"]
 script = ExtResource("1_ij07s")
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 3.0
+offset_top = -112.0
+offset_right = 2532.0
+offset_bottom = 416.0
+color = Color(0.614125, 0.304961, 0.172567, 1)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 3.0
 offset_top = 399.0
-offset_right = 1456.0
-offset_bottom = 721.0
+offset_right = 2163.0
+offset_bottom = 1031.0
 color = Color(0.379369, 0.228041, 0.138082, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 1467.0
-offset_bottom = 400.0
-color = Color(0.614125, 0.304961, 0.172567, 1)
-
 [node name="Bookshelf" type="Sprite2D" parent="."]
-position = Vector2(470, 367.75)
+position = Vector2(590, 359)
 scale = Vector2(1.33846, 0.982759)
 texture = ExtResource("7_4wdk8")
 
 [node name="Door" type="Button" parent="."]
-offset_left = 710.0
-offset_top = 311.0
-offset_right = 794.0
-offset_bottom = 406.0
+offset_left = 772.0
+offset_top = 307.0
+offset_right = 860.0
+offset_bottom = 405.0
 focus_mode = 0
 theme_override_colors/icon_hover_color = Color(0.241156, 0.241156, 0.241156, 1)
 icon = ExtResource("5_k661y")
@@ -56,7 +57,7 @@ position = Vector2(-819, -454)
 script = ExtResource("4_rbc6l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageItems/Playerarea"]
-position = Vector2(600, 529.25)
+position = Vector2(600, 520.75)
 shape = SubResource("RectangleShape2D_fc1kq")
 
 [node name="player" parent="StageItems" instance=ExtResource("3_maqwd")]
@@ -82,15 +83,18 @@ theme_override_font_sizes/font_size = 70
 text = "You Win!!"
 
 [node name="Chair" type="Sprite2D" parent="."]
-position = Vector2(600, 408)
+position = Vector2(928, 384)
 texture = ExtResource("8_vw6nn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(231.318, 308)
+position = Vector2(379, 309)
 scale = Vector2(2.14986, 1.73387)
 texture = ExtResource("9_lva16")
 region_enabled = true
 region_rect = Rect2(168.813, 37.8517, 111.029, 46.1842)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_sxv03")
 
 [connection signal="button_down" from="Door" to="." method="_on_door_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
